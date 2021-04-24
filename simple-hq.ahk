@@ -1,16 +1,27 @@
+BasicSynth()
+{
+    Send, 1
+}
+TrainedEye()
+{
+    Send, -
+}
+
 while (true)
 {
-    Send, {Numpad0}
-    Sleep, 100
-    Send, {Numpad0}
-    Sleep, 100
-    Send, {Numpad0}
     Random, init_wait , 2000, 2200
-    Sleep, %init_wait%
-    Send, -
-    Random, 1st_skill_wait , 3000, 3200
-    Sleep, %1st_skill_wait%
-    Send, 1
+    Random, skill_wait , 3000, 3200
     Random, repeat_wait , 7000, 7200
-    Sleep, 7000
+    Loop, 3
+    {
+        Send, {Numpad0}
+        Sleep, 100
+    }
+
+    Sleep, %init_wait%
+    TrainedEye()
+    Sleep, %skill_wait%
+    BasicSynth()
+    
+    Sleep, %repeat_wait%
 }
